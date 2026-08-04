@@ -1,0 +1,15 @@
+{
+  "SchemaVersion": 1,
+  "PackageId": "selfupdate-testscript",
+  "Version": "1.1.0",
+  "Channel": "test",
+  "PublishedUtc": "2026-08-04T23:34:04.2688093Z",
+  "PackageUrl": "https://raw.githubusercontent.com/dotnetReto/Package-UpdateFeed/main/feeds/selfupdate-testscript/test/package.enc",
+  "PackageSha256": "73f9cd33d97e5ac4f32fde13b9c14b7a01768f36024137aacc6f2cc737dbcbb6",
+  "Encryption": {
+    "Format": "OASEUPD1",
+    "Algorithm": "AES-256-CBC-HMAC-SHA256",
+    "Kdf": "PBKDF2-HMAC-SHA256",
+    "Iterations": 200000
+  }
+}
