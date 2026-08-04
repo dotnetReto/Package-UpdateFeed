@@ -19,23 +19,23 @@ feeds/
 
 Package IDs should be neutral and should not disclose customer, company or system names unnecessarily.
 
-## Channel workflow
+## Release flow
 
-1. Publish a new encrypted package and manifest to `test`.
-2. Validate the package on selected test installations.
-3. Promote the exact same `package.enc` bytes and SHA-256 value to `stable`.
-4. Create the stable manifest with `Channel` set to `stable` and the stable package URL.
+1. Publish a new encrypted package to `test`.
+2. Validate it on selected test installations.
+3. Promote the exact same `package.enc` to `stable`.
+4. Verify that the SHA-256 value is unchanged.
+5. Change only the stable manifest channel, publication time and package URL.
 
-The encrypted package itself is channel-neutral. Only the manifest identifies whether it belongs to the `test` or `stable` feed.
+Clients never downgrade when changing channels. A client running a newer test version remains on that version until stable catches up.
 
-Clients never downgrade automatically. A client that switches from test version `2.5.0` to a stable feed still at `2.4.0` remains on `2.5.0` until stable catches up or publishes a higher version.
+## Security rules
 
-## Security notes
-
-- Every package is encrypted before publication.
 - Every project uses a separate update password.
-- The update password remains in the private calling script and is never committed here.
-- Clients verify the encrypted package SHA-256 value from the manifest.
-- Manifest signing will be added before production use.
+- Passwords remain in private calling scripts and are never committed here.
+- Runtime packages are authenticated and encrypted before publication.
+- Clients verify the encrypted package SHA-256 value.
+- The decrypted package contains a file inventory with SHA-256 values.
+- No production package should be published before updater validation and rollback tests pass.
 
 No production package is published yet.
